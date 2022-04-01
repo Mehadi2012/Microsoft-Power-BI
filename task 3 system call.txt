@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<unistd.h>
+
+
+int main(int argc, char *argv[]){
+    int no_of_process = 1;
+
+    wait(3);
+    int a = fork();
+
+    no_of_process++;
+    if(a%2 != 0){
+        wait(1);
+  	  int b = fork();
+
+        if(b%2 != 0){
+                int c = fork();
+                no_of_process++;
+
+        }
+        no_of_process++;
+
+    }
+
+    printf("Process have been created : %d times\n",no_of_process);
+
+
+    return 0;
+}
